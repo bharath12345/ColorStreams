@@ -45,24 +45,31 @@ doing so does not break the logic
 
 $sbt run
 [info] Running in.bharathwrites.ColorStreams
+
 Enter:
 **1** or **2** for **Channel Number** and hit enter
 **8** to print **results** and go back to **feeding* more data
 **9** to print **results** and **end** the program:
 1
+
 Enter **data** and hit enter (use space as delimiter to enter multiple data elements at once):
 R1_1 R1_2 R1_3 B1_4 B1_8 G1_5
+
 Enter:
 **1** or **2** for **Channel Number** and hit enter
 **8** to print **results** and go back to **feeding* more data
 **9** to print **results** and **end** the program:
 2
+
 Enter **data** and hit enter (use space as delimiter to enter multiple data elements at once):
 B2_6 B2_8 R2_9 G2_10 B2_7 R2_20
+
 Enter:
 **1** or **2** for **Channel Number** and hit enter
 **8** to print **results** and go back to **feeding* more data
 **9** to print **results** and **end** the program:
 9
+
 **Result: Vector((R1_1,R2_9), (R1_2,R2_20), (B1_4,B2_6), (B1_8,B2_8), (G1_5,G2_10))**
+
 [success] Total time: 16 s, completed 7 May, 2016 12:09:05 AM

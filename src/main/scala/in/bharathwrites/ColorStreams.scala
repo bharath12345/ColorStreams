@@ -71,11 +71,11 @@ object ColorStreams {
     channel match {
       case 8 =>
         compute(channelOne)
-        println(Console.GREEN_B + Console.BOLD + s"Result: ${result}" + Console.RESET)
+        println("\n" + Console.GREEN_B + Console.BOLD + s"Result: ${result}" + Console.RESET + "\n")
         getInput()
       case 9 =>
         compute(channelOne)
-        println(Console.GREEN_B + Console.BOLD + s"Result: ${result}" + Console.RESET)
+        println("\n" + Console.GREEN_B + Console.BOLD + s"Result: ${result}" + Console.RESET + "\n")
       case _ =>
         val data = getData()
         data.foreach { elem =>
@@ -101,7 +101,7 @@ object ColorStreams {
       val feeding = Console.BOLD + "feeding" + Console.RESET
       val end = Console.BOLD + "end" + Console.RESET
 
-      println(
+      println("\n" +
         s"""Enter:
           |${one} or ${two} for ${channel} and hit enter
           |${eight} to print ${results} and go back to ${feeding} more data
@@ -120,7 +120,7 @@ object ColorStreams {
   private[bharathwrites] def getData(input: Option[String] = None): Array[Data] = {
     try {
       val data = Console.BOLD + "data" + Console.RESET
-      println(s"Enter ${data} and hit enter (use space as delimiter to enter multiple data elements at once):")
+      println("\n" + s"Enter ${data} and hit enter (use space as delimiter to enter multiple data elements at once):")
       val inLine = input match {
         case Some(x) => x
         case None => StdIn.readLine()
