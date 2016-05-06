@@ -43,7 +43,7 @@ for the same data to check that compute() can be called periodically and
 doing so does not break the logic
 5. Sample interaction:
 
-> run
+$sbt run
 [info] Running in.bharathwrites.ColorStreams
 Enter:
 **1** or **2** for **Channel Number** and hit enter
@@ -66,4 +66,3 @@ Enter:
 9
 **Result: Vector((R1_1,R2_9), (R1_2,R2_20), (B1_4,B2_6), (B1_8,B2_8), (G1_5,G2_10))**
 [success] Total time: 16 s, completed 7 May, 2016 12:09:05 AM
->
