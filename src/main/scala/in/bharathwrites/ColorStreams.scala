@@ -23,9 +23,9 @@ object ColorStreams {
   private val DataRegex = """([RGB])([12])_(\d+)""".r
   private val DataPattern = DataRegex.pattern
 
-  private var channelOne: Vector[Data] = Vector()
-  private var channelTwo: Vector[Data] = Vector()
-  private var result: Vector[(Data, Data)] = Vector()
+  private[bharathwrites] var channelOne: Vector[Data] = Vector()
+  private[bharathwrites] var channelTwo: Vector[Data] = Vector()
+  private[bharathwrites] var result: Vector[(Data, Data)] = Vector()
 
   def main(args: Array[String]) = getInput()
 
@@ -34,7 +34,7 @@ object ColorStreams {
     println(s"channel two = $channelTwo")
   }
 
-  private def compute(firstChannel: Vector[Data]): Unit = {
+  private[bharathwrites] def compute(firstChannel: Vector[Data]): Unit = {
     // printChannels()
 
     def matchColor(data: Data, secondChannel: Vector[Data]): Boolean = {
@@ -71,11 +71,11 @@ object ColorStreams {
     channel match {
       case 8 =>
         compute(channelOne)
-        println(s"Result: ${result}")
+        println(Console.GREEN_B + Console.BOLD + s"Result: ${result}" + Console.RESET)
         getInput()
       case 9 =>
         compute(channelOne)
-        println(s"Result: ${result}")
+        println(Console.GREEN_B + Console.BOLD + s"Result: ${result}" + Console.RESET)
       case _ =>
         val data = getData()
         data.foreach { elem =>
@@ -90,11 +90,22 @@ object ColorStreams {
 
   private def getChannel(): Channel = {
     try {
+      val one = Console.BLUE + Console.BOLD + "1" + Console.RESET
+      val two = Console.BLUE + Console.BOLD + "2" + Console.RESET
+
+      val eight = Console.RED + Console.BOLD + "8" + Console.RESET
+      val nine  = Console.RED + Console.BOLD + "9" + Console.RESET
+
+      val channel = Console.BOLD + "Channel Number" + Console.RESET
+      val results = Console.BOLD + "results" + Console.RESET
+      val feeding = Console.BOLD + "feeding" + Console.RESET
+      val end = Console.BOLD + "end" + Console.RESET
+
       println(
-        """Enter:
-          |1 or 2 for Channel Number and hit enter
-          |8 to print results and go back to feeding more data
-          |9 to print results and end the program:""".stripMargin)
+        s"""Enter:
+          |${one} or ${two} for ${channel} and hit enter
+          |${eight} to print ${results} and go back to ${feeding} more data
+          |${nine} to print ${results} and ${end} the program:""".stripMargin)
       val inLine = StdIn.readLine()
       val c = inLine.toInt
       if (c == 1 || c == 2 || c == 8 || c == 9) c
@@ -106,10 +117,14 @@ object ColorStreams {
     }
   }
 
-  private def getData(): Array[Data] = {
+  private[bharathwrites] def getData(input: Option[String] = None): Array[Data] = {
     try {
-      println("Enter data and hit enter (use space as delimiter to enter multiple data elements at once):")
-      val inLine = StdIn.readLine()
+      val data = Console.BOLD + "data" + Console.RESET
+      println(s"Enter ${data} and hit enter (use space as delimiter to enter multiple data elements at once):")
+      val inLine = input match {
+        case Some(x) => x
+        case None => StdIn.readLine()
+      }
       val delements = inLine.split(" +")
       delements.flatMap { delem =>
         if (DataPattern.matcher(delem).matches()) {
